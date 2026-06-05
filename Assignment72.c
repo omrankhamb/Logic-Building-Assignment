@@ -1,34 +1,30 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef int BOOL;
-#define TRUE 1
-#define FALSE 0
 
-//Accepet Number from user and Accepet one another number as NO , and check whether NO is present or not
+//Acepet Number from user and Accepet one another number as NO , and check whether NO is present or not
 
-BOOL Check(int Arr[],int iLength,int NO)
+int  FirstOcc(int Arr[],int iLength,int NO)
 {
     int iCnt = 0;
-    BOOL bret = FALSE;
-    int iFrequency = 0;
+    int iIndex = -1;
     for(iCnt = 0 ; iCnt < iLength ; iCnt++)
     {
         if(Arr[iCnt] == NO)
         {
-            bret = TRUE;
-            
+            iIndex = iCnt;
+            break;
+
         }
-       
     }
 
-    return bret;
+    return iIndex;
+    
 }
 
 int main()
 {
     int iSize = 0,iRet = 0,iNo = 0,iValue = 0,iCnt = 0;
-    BOOL bret = FALSE;
     int *p = NULL;
 
     printf("Enter number of elements : ");
@@ -51,14 +47,15 @@ int main()
         scanf("%d",(p + iCnt));
     }
 
-    bret = Check(p,iSize,iValue);
-    
-    if(bret)
+    iRet = FirstOcc(p,iSize,iValue);
+
+    if(iRet == -1)
     {
-        printf("Number is present");
+        printf("there is no such number ");
     }
-    else{
-        printf("Number is not present");
+    else
+    {
+        printf("First occurence of Number is %d",iRet);
     }
 
     free(p);
