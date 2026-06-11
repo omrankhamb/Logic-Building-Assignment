@@ -2,20 +2,33 @@
 
 class Logic
 {
-    public void printTable(int num)
+    public void checkprime(int num)
     {
-        int iCnt = 0;
-        for(iCnt = 1 ; iCnt <= 10 ; iCnt++)
+        int iCnt = 0; 
+        for(iCnt = 2; iCnt < (num / 2) ; iCnt++)
         {
-            System.out.println(num* iCnt);
+            if(num % iCnt == 0)
+            {
+                break;
+            }
+
         }
+        System.out.println(iCnt+" "+ num/2);
+        if(iCnt == (num /2))
+        {
+            System.out.println("Number is prime");
+        }else
+        {
+            System.out.println("Number is not prime");
+        }
+        
     }
 }
-class Assignment85
+class Assignment86
 {
     public static void main(String A[])
     {
         Logic obj =  new Logic();
-        obj.printTable(5);
+        obj.checkprime(11);
     }
 }
