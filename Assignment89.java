@@ -3,7 +3,6 @@ class Logic
 {
     public void SumEvenOddDigits(int n)
     {
-        int iCNt = 0;
         int iEvenSum = 0;
         int iOddSum = 0;
 
