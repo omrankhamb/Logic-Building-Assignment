@@ -1,7 +1,8 @@
 // Linkedlist
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
+// Linkedlist
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #pragma pack(1)
 
 struct node
@@ -10,11 +11,9 @@ struct node
     struct node *next;
 };
 
-
 typedef struct node NODE;
-typedef struct node* PNODE;
-typedef struct node**  PPNODE;
-
+typedef struct node *PNODE;
+typedef struct node **PPNODE;
 
 void Display(PNODE first)
 {
@@ -23,13 +22,12 @@ void Display(PNODE first)
 
     while (temp != NULL)
     {
-        printf("|%d|->",temp->data);
+        printf("|%d|->", temp->data);
         temp = temp->next;
     }
 
     printf("NULL\n");
 }
-
 
 int Count(PNODE first)
 {
@@ -44,18 +42,16 @@ int Count(PNODE first)
     }
 
     return iCnt;
-    
 }
 
-
-void InsertFirst(PPNODE first,int data)
+void InsertFirst(PPNODE first, int data)
 {
     PNODE newn = NULL;
     newn = (PNODE)malloc(sizeof(NODE));
     newn->data = data;
     newn->next = NULL;
 
-    if((*first) == NULL)
+    if ((*first) == NULL)
     {
         (*first) = newn;
     }
@@ -66,9 +62,7 @@ void InsertFirst(PPNODE first,int data)
     }
 }
 
-
-
-void InsertLast(PPNODE first,int data)
+void InsertLast(PPNODE first, int data)
 {
     PNODE newn = NULL;
     PNODE temp = NULL;
@@ -77,7 +71,7 @@ void InsertLast(PPNODE first,int data)
     newn->data = data;
     newn->next = NULL;
 
-    if((*first) == NULL)
+    if ((*first) == NULL)
     {
         (*first) = newn;
     }
@@ -94,33 +88,32 @@ void InsertLast(PPNODE first,int data)
     }
 }
 
-
-void InsertAtPos(PPNODE first,int data,int iPos)
+void InsertAtPos(PPNODE first, int data, int iPos)
 {
     PNODE temp = NULL;
     PNODE newn = NULL;
     int i = 0;
     int iLength = Count(*first);
-    
-    if((iPos < 1) || (iPos > (iLength + 1)))
+
+    if ((iPos < 1) || (iPos > (iLength + 1)))
     {
         printf("At wrong position \n");
         return;
     }
 
-    if(iPos == 1)
+    if (iPos == 1)
     {
-        InsertFirst(first,data);
+        InsertFirst(first, data);
     }
     else if (iPos == (iLength + 1))
     {
-        InsertLast(first,data);
+        InsertLast(first, data);
     }
     else
     {
         temp = (*first);
 
-        for(i = 1 ; i < iPos -1 ; i++)
+        for (i = 1; i < iPos - 1; i++)
         {
             temp = temp->next;
         }
@@ -131,22 +124,19 @@ void InsertAtPos(PPNODE first,int data,int iPos)
 
         newn->next = temp->next;
         temp->next = newn;
-
     }
-    
 }
-
 
 void DeleteFirst(PPNODE first)
 {
     PNODE newn = NULL;
     PNODE temp = NULL;
 
-    if((*first) == NULL)
+    if ((*first) == NULL)
     {
         return;
     }
-    else if((*first)->next == NULL)
+    else if ((*first)->next == NULL)
     {
         newn = (*first);
         (*first) = NULL;
@@ -162,48 +152,47 @@ void DeleteFirst(PPNODE first)
     }
 }
 
-
 void DeleteLast(PPNODE first)
 {
-    PNODE temp =NULL;
-    if((*first) == NULL)                 
+    PNODE temp = NULL;
+    if ((*first) == NULL)
     {
         return;
     }
-    else if((*first)->next == NULL)     
+    else if ((*first)->next == NULL)
     {
         free((*first));
         (*first) = NULL;
         // head = NULL;
     }
-    else                                
+    else
     {
         temp = (*first);
 
-        while (temp->next->next != NULL) 
+        while (temp->next->next != NULL)
         {
             temp = temp->next;
         }
 
         free(temp->next);
-        temp->next = NULL;        
+        temp->next = NULL;
     }
 }
 
-void DeleteAtPos(PPNODE first,int iPos)
+void DeleteAtPos(PPNODE first, int iPos)
 {
     PNODE temp = NULL;
     PNODE newn = NULL;
     int i = 0;
     int iLength = Count(*first);
-    
-    if((iPos < 1) || (iPos > (iLength + 1)))
+
+    if ((iPos < 1) || (iPos > (iLength + 1)))
     {
         printf("At wrong position \n");
         return;
     }
 
-    if(iPos == 1)
+    if (iPos == 1)
     {
         DeleteFirst(first);
     }
@@ -215,10 +204,9 @@ void DeleteAtPos(PPNODE first,int iPos)
     {
         temp = (*first);
 
-        for(i = 1 ; i < iPos -1 ; i++)
+        for (i = 1; i < iPos - 1; i++)
         {
             temp = temp->next;
-
         }
 
         newn = temp->next;
@@ -226,11 +214,9 @@ void DeleteAtPos(PPNODE first,int iPos)
         newn->next = NULL;
         free(newn);
     }
-    
 }
 
-
-bool Search(PNODE Head,int iNo)
+bool Search(PNODE Head, int iNo)
 {
     PNODE temp = NULL;
     temp = Head;
@@ -238,15 +224,14 @@ bool Search(PNODE Head,int iNo)
 
     while (temp != NULL)
     {
-        if(temp->data == iNo)
+        if (temp->data == iNo)
         {
             bFlag = true;
         }
         temp = temp->next;
-    }  
+    }
 
     return bFlag;
-
 }
 
 int CountEven(PNODE head)
@@ -258,14 +243,14 @@ int CountEven(PNODE head)
 
     while (temp != NULL)
     {
-        if((temp->data) %2 == 0)
+        if ((temp->data) % 2 == 0)
         {
             iCnt++;
         }
 
         temp = temp->next;
     }
-    
+
     return iCnt;
 }
 
@@ -275,21 +260,21 @@ int CountOdd(PNODE head)
     PNODE temp = NULL;
 
     temp = head;
-    
+
     while (temp != NULL)
     {
-        if(((temp->data) % 2) == 1)
+        if (((temp->data) % 2) == 1)
         {
             iCnt++;
         }
 
         temp = temp->next;
     }
-    
+
     return iCnt;
 }
 
-int Frequency(PNODE head,int iNo)
+int Frequency(PNODE head, int iNo)
 {
     PNODE temp = NULL;
     int iCnt = 0;
@@ -298,7 +283,7 @@ int Frequency(PNODE head,int iNo)
 
     while (temp)
     {
-        if((temp->data) == iNo)
+        if ((temp->data) == iNo)
         {
             iCnt++;
         }
@@ -306,7 +291,6 @@ int Frequency(PNODE head,int iNo)
     }
 
     return iCnt;
-    
 }
 
 void DisplayEven(PNODE head)
@@ -318,17 +302,16 @@ void DisplayEven(PNODE head)
 
     while (temp != NULL)
     {
-        if((temp->data) % 2 == 0)
+        if ((temp->data) % 2 == 0)
         {
-            printf("|%d|->",temp->data);
+            printf("|%d|->", temp->data);
         }
 
         temp = temp->next;
     }
-    
+
     printf("NULL\n");
 }
-
 
 void DisplayOdd(PNODE head)
 {
@@ -339,18 +322,18 @@ void DisplayOdd(PNODE head)
 
     while (temp != NULL)
     {
-        if((temp->data) % 2 == 1)
+        if ((temp->data) % 2 == 1)
         {
-            printf("|%d|->",temp->data);
+            printf("|%d|->", temp->data);
         }
 
         temp = temp->next;
     }
-    
+
     printf("NULL\n");
 }
 
-int FirstOccur(PNODE head,int No)
+int FirstOccur(PNODE head, int No)
 {
     PNODE temp = NULL;
     int iCnt = 0;
@@ -360,19 +343,18 @@ int FirstOccur(PNODE head,int No)
     while (temp)
     {
         iCnt++;
-        if(temp->data == No)
+        if (temp->data == No)
         {
             break;
-        }   
-        
+        }
+
         temp = temp->next;
     }
-    
+
     return iCnt;
 }
 
-
-int LastOccur(PNODE head,int No)
+int LastOccur(PNODE head, int No)
 {
     PNODE temp = NULL;
     int iCnt = 0;
@@ -383,19 +365,18 @@ int LastOccur(PNODE head,int No)
     while (temp)
     {
         iCnt++;
-        if(temp->data == No)
+        if (temp->data == No)
         {
             iPos = iCnt;
-        }   
-        
+        }
+
         temp = temp->next;
     }
-    
+
     return iPos;
 }
 
-
-int CountGreater(PNODE head,int X)
+int CountGreater(PNODE head, int X)
 {
     PNODE temp = NULL;
     int iCnt = 0;
@@ -404,18 +385,17 @@ int CountGreater(PNODE head,int X)
 
     while (temp)
     {
-        if((temp->data) > X)
+        if ((temp->data) > X)
         {
             iCnt++;
         }
         temp = temp->next;
     }
-    
+
     return iCnt;
 }
 
-
-int CountLess(PNODE head,int X)
+int CountLess(PNODE head, int X)
 {
     PNODE temp = NULL;
     int iCnt = 0;
@@ -424,13 +404,13 @@ int CountLess(PNODE head,int X)
 
     while (temp)
     {
-        if((temp->data) < X)
+        if ((temp->data) < X)
         {
             iCnt++;
         }
         temp = temp->next;
     }
-    
+
     return iCnt;
 }
 
@@ -440,52 +420,52 @@ int main()
     bool bRet = false;
     int iRet = 0;
 
-    InsertFirst(&head,101);
-    InsertFirst(&head,100);
-    InsertFirst(&head,51);
-    InsertFirst(&head,50);
-    InsertFirst(&head,21);
-    InsertFirst(&head,20);
-    InsertFirst(&head,11);
+    InsertFirst(&head, 101);
+    InsertFirst(&head, 100);
+    InsertFirst(&head, 51);
+    InsertFirst(&head, 50);
+    InsertFirst(&head, 21);
+    InsertFirst(&head, 20);
+    InsertFirst(&head, 11);
 
     Display(head);
     iRet = Count(head);
-    printf("Number Of Nodes are : %d\n",iRet);
+    printf("Number Of Nodes are : %d\n", iRet);
 
-    InsertLast(&head,111);
-    InsertLast(&head,121);
-    
+    InsertLast(&head, 111);
+    InsertLast(&head, 121);
+
     Display(head);
     iRet = Count(head);
-    printf("Number Of Nodes are : %d\n",iRet);
+    printf("Number Of Nodes are : %d\n", iRet);
 
     DeleteFirst(&head);
 
     Display(head);
     iRet = Count(head);
-    printf("Number Of Nodes are : %d\n",iRet);
+    printf("Number Of Nodes are : %d\n", iRet);
 
     DeleteLast(&head);
 
     Display(head);
     iRet = Count(head);
-    printf("Number Of Nodes are : %d\n",iRet);
+    printf("Number Of Nodes are : %d\n", iRet);
 
-    InsertAtPos(&head,105,4);
+    InsertAtPos(&head, 105, 4);
 
     Display(head);
     iRet = Count(head);
-    printf("Number Of Nodes are : %d\n",iRet);
+    printf("Number Of Nodes are : %d\n", iRet);
 
-    DeleteAtPos(&head,4);
-    
+    DeleteAtPos(&head, 4);
+
     Display(head);
     iRet = Count(head);
-    printf("Number Of Nodes are : %d\n",iRet);
+    printf("Number Of Nodes are : %d\n", iRet);
 
     printf("\n\n");
-    bRet = Search(head,511);
-    if(bRet)
+    bRet = Search(head, 511);
+    if (bRet)
     {
         printf("Node Is present in Linkedlist\n");
     }
@@ -493,15 +473,15 @@ int main()
     {
         printf("Node Is Not Present in Linkedlist\n");
     }
-    
+
     iRet = CountEven(head);
-    printf("Number of EVEN Node : %d\n",iRet);
+    printf("Number of EVEN Node : %d\n", iRet);
 
     iRet = CountOdd(head);
-    printf("Number of ODD Node : %d\n",iRet);
+    printf("Number of ODD Node : %d\n", iRet);
 
-    iRet = Frequency(head,21);
-    printf("Frequency of Number is : %d\n",iRet);
+    iRet = Frequency(head, 21);
+    printf("Frequency of Number is : %d\n", iRet);
 
     printf("Display Even : \n");
     DisplayEven(head);
@@ -509,24 +489,23 @@ int main()
     printf("Display Odd : \n");
     DisplayOdd(head);
 
-    iRet = FirstOccur(head,21);
-    printf("First Occurence at : %d\n",iRet);
+    iRet = FirstOccur(head, 21);
+    printf("First Occurence at : %d\n", iRet);
 
-    InsertLast(&head,21);
+    InsertLast(&head, 21);
 
     Display(head);
     iRet = Count(head);
-    printf("Number Of Nodes are : %d\n",iRet);
+    printf("Number Of Nodes are : %d\n", iRet);
 
-    iRet = LastOccur(head,21);
-    printf("Last Occurence at : %d\n",iRet);
+    iRet = LastOccur(head, 21);
+    printf("Last Occurence at : %d\n", iRet);
 
-    iRet = CountGreater(head,50);
-    printf("Number Greater than : %d\n",iRet);
+    iRet = CountGreater(head, 50);
+    printf("Number Greater than : %d\n", iRet);
 
-    iRet = CountLess(head,50);
-    printf("Number Less than : %d\n",iRet);
+    iRet = CountLess(head, 50);
+    printf("Number Less than : %d\n", iRet);
 
     return 0;
-
 }
