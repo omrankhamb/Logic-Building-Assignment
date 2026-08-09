@@ -1,0 +1,5 @@
+Name of file : A.txt
+Length of File :10Name of file : B.txt
+Length of File :20Name of file : C.txt
+Length of File :30Name of file : HelloDemo
+Length of File :0

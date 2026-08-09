@@ -1,0 +1,9 @@
+Name of file : A.txt
+Length of File :10
+AAAAAAAAAA
+Name of file : B.txt
+Length of File :20
+BBBBBBBBBBBBBBBBBBBB
+Name of file : C.txt
+Length of File :30
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
