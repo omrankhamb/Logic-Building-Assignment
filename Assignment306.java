@@ -1,0 +1,200 @@
+import java.util.*;
+// Write a program which accepet matrix and return largest number from both of the diagonals
+
+class Arrayx
+{
+    public int Arr[][];
+
+    public Arrayx(int Row, int Col) {
+        Arr = new int[Row][Col];
+    }
+
+
+    public void getArray()
+    {
+        Scanner sobj =  new Scanner(System.in);
+        System.out.println("Enter the array :");
+
+        for(int i = 0 ; i < Arr.length ; i++)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+                Arr[i][j] = sobj.nextInt();
+            }
+        }
+    }
+
+    public int  DiagonalAddition()
+    {
+        int iSum = 0;
+
+        for(int i = 0 ; i <  Arr.length ; i++)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+                if(i == j)
+                {
+                    iSum = iSum + Arr[i][j];
+                }
+            }
+        }
+
+        return iSum;
+    }
+
+    public int  FrequencyOfNumber(int iNo)
+    {
+        int freq = 0;
+
+        for(int i = 0 ; i <  Arr.length ; i++)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+
+                if(Arr[i][j] == iNo)
+                {
+                    freq++;
+                }
+            }
+        }
+
+        return freq;
+    }
+
+    public int  LargestFromDiagonals()
+    {
+        int max =  Arr[0][0];
+
+        for(int i = 0 ; i <  Arr.length ; i++)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+
+                if((i == j ) || (i + j)  == (Arr.length - 1))
+                {
+                    if(max  < Arr[i][j])
+                    {
+                        max = Arr[i][j];
+                    }
+                }
+            }
+        }
+
+        return max;
+    }
+
+    public void  SumOfColumn()
+    {
+        int Sum = 0;
+        for(int i = 0 ; i <  Arr.length ; i++)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+
+                Sum += Arr[j][i];
+            }
+            System.out.println(Sum + " ");
+            Sum = 0;
+        }
+
+        
+    }
+
+    public void  SwapRows()
+    {
+        for(int i = 0 ; i < Arr.length && (i + 1) != Arr.length; i+=2)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+                int x = Arr[i][j];
+                Arr[i][j]  = Arr[i+1][j];
+                Arr[i+1][j] = x;
+
+            }
+            
+        }        
+    }
+
+    public void Print()
+    {
+        for(int i = 0 ; i <  Arr.length ; i++)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+                System.out.print(Arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+    }
+
+    public void Transpose()
+    {
+        
+        for(int i = 0 ; i < Arr[i].length ; i++)
+        {
+            for(int j = 0 ; j < Arr.length ; j++)
+            {
+                System.out.print(Arr[j][i] + " ");
+            }
+            System.out.println();
+        }
+        
+    }
+
+    public void ReverseRow()
+    {
+        
+        for(int i = 0 ; i < Arr.length ; i++)
+        {
+            for(int j = Arr[i].length - 1 ; j >=0 ; j--)
+            {   
+                    System.out.print(Arr[i][j]);
+            }
+            System.out.println();
+        }
+        
+    }
+
+    public void ReverseColumn()
+    {
+        
+        for(int i = Arr.length - 1; i >= 0 ; i--)
+        {
+            for(int j = 0 ; j < Arr[i].length ; j++)
+            {
+                System.out.print(Arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+    }
+
+}
+
+class Assignment306
+{
+    public static void main(String Arg[])
+    {
+        Scanner sobj = new Scanner(System.in);
+        System.out.println("Hello");
+        int Row = 0;
+        int Col = 0;
+        int iRet = 0;
+        int i = 0;
+        int Arr[][] = null;
+
+        System.out.println("Enter Number of Rows : ");
+        Row = sobj.nextInt();
+
+        System.out.println("Enter Number of Column : ");
+        Col = sobj.nextInt();
+
+        Arrayx obj = new Arrayx(Row, Col);
+    
+        obj.getArray();
+        System.out.println();
+        obj.ReverseColumn();
+
+    }
+}
