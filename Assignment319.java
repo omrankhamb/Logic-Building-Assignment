@@ -2,7 +2,8 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-class Assignment312 {
+class Assignment319
+{
     public static void main(String Arg[]) {
         try {
             Socket socket = new Socket("127.0.0.1", 9000);
@@ -13,7 +14,7 @@ class Assignment312 {
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
-            System.out.print("Enter the Operation (or type 'end' to quit): ");
+            System.out.print("Enter the File name :  ");
 
             while (true) {
                 System.out.print("Client : \n");
